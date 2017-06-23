@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>row_id:</strong>
+  <%= @postcode_datum.row_id %>
+</p>
+
+<p>
+  <strong>postcode:</strong>
+  <%= @postcode_datum.postcode %>
+</p>
+
+<%= link_to 'Edit', edit_postcode_datum_path(@postcode_datum) %> |
+<%= link_to 'Back', postcode_data_path %>

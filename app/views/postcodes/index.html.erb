@@ -1,0 +1,26 @@
+<div class="container">
+
+<h1>UK Postcode Validation</h1>
+
+<div class="constrainer">
+
+
+<%= form_tag "postcodes/validate_each", method: "get" do %>
+  <%= label_tag(:q, "Enter UK Postcode:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag "Validate" %>
+<% end %>
+
+
+
+<h3>Poscode File Import </h3>
+<%= form_tag import_postcode_data_path, multipart: true do %>
+  <%= file_field_tag :file %>
+<br>
+  <%= submit_tag "Upload" %>
+
+<% end %>
+
+</div>
+
+</div>
