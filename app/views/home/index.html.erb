@@ -1,0 +1,20 @@
+<div class="container">
+
+<h1>UK Postcode Validation</h1>
+
+
+
+<div class="container">
+
+
+<h3>Poscode File Import </h3>
+<%= form_tag import_postcode_data_path, multipart: true do %>
+  <%= file_field_tag :file %>
+<br>
+  <%= submit_tag "Upload" %>
+
+<% end %>
+
+</div>
+
+</div>

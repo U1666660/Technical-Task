@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Postcodes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Postcode</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @postcodes.each do |postcode| %>
+      <tr>
+        <td><%= postcode.postcode %></td>
+        <td><%= link_to 'Show', postcode %></td>
+        <td><%= link_to 'Edit', edit_postcode_path(postcode) %></td>
+        <td><%= link_to 'Destroy', postcode, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Postcode', new_postcode_path %>
