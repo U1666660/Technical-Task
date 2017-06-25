@@ -12,7 +12,7 @@ class PostcodeFormatValidator < ActiveModel::EachValidator
 
       def validate_each(record, attribute, value)
           unless value=~ POSTCODE_REGEX
-            record.errors[attribute] << (options[:message] || "#{value} is not a valid UK Postcode")
+            record.errors[attribute] << (options[:message] || "#{value} is not a valid UK postcode")
           end
         end
 

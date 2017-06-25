@@ -28,7 +28,7 @@ class PostcodesController < ApplicationController
 
     respond_to do |format|
       if @postcode.save
-        format.html { redirect_to @postcode, notice: 'Postcode was successfully created.' }
+        format.html { redirect_to @postcode, notice: 'This is a valid UK postcode!' }
         format.json { render :show, status: :created, location: @postcode }
       else
         format.html { render :new }

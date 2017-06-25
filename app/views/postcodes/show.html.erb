@@ -1,9 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Postcode:</strong>
-  <%= @postcode.postcode %>
-</p>
 
-<%= link_to 'Edit', edit_postcode_path(@postcode) %> |
-<%= link_to 'Back', postcodes_path %>
+<h2><p id="notice"><%= notice %></p></h2>
+
+<h4><p><strong>Postcode:</strong> <%= @postcode.postcode %></p></h4>
+
+<%= link_to 'Home', root_path, :class=>"btn btn-default" %>
+<%= link_to 'New One', new_postcode_path, :class=>"btn btn-warning" %>
+
+
+</div>

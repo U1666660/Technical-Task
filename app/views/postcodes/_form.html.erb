@@ -5,7 +5,7 @@
 
       <ul>
       <% postcode.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><h3><%= message %></h3></li>
       <% end %>
       </ul>
     </div>
@@ -15,9 +15,11 @@
 <div class="container">
 
   <div class="field">
-    <%= f.label :postcode %>
-    <%= f.text_field :postcode %>
+    <h3><%= f.label :postcode %>
+    <%= f.text_field :postcode %></h3>
   </div>
+
+
 <br>
   <div class="actions">
   <%= f.submit 'Validate', :class=>"btn btn-warning"%>
