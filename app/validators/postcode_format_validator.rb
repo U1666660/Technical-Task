@@ -11,6 +11,43 @@ class PostcodeFormatValidator < ActiveModel::EachValidator
       end
 
 
+SINGLE_DIGIT = begin
+
+br = '^([B][R]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+fy = '^([F][Y]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+ha = '^([H][A]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+hd = '^([H][D]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+hg = '^([H][G]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+hr = '^([H][R]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+hs = '^([H][S]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+hx = '^([H][X]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+je = '^([J][E]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+ld = '^([L][D]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+sm = '^([S][M]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+sr = '^([S][R]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+wc = '^([W][C]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+wn = '^([W][N]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+ze = '^([Z][E]\d{2})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+
+single_digit = "#{br}|#{fy}|#{ha}|#{hd}|#{hg}|#{hr}|#{hs}|#{hx}|#{je}|#{ld}|#{sm}|#{sr}|#{wc}|#{wn}|#{ze}"
+pattern = /#{single_digit}/i
+
+end
+
+
+DOUBLE_DIGIT = begin
+
+ab = '^([A][B]\d{1})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+ll = '^([L][L]\d{1})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+so = '^([S][O]\d{1})\s*([0-9][ABD-HJLN-UW-Z]{2})$'
+
+
+double_digit = "#{ab}|#{ll}|#{so}"
+pattern = /#{double_digit}/i
+
+end
+
+
 
 def validate_each(record, attribute, value)
 
@@ -59,19 +96,17 @@ def validate_each(record, attribute, value)
       end
 
 
-
-      if value=~ /^[A-PR-UWYZ][A-HK-Y][0-9](?!(BR|FY|HA|HD|HG|HR|HS|HX|JE|LD|SM|SR|WC|WN|ZE)[0-9])[0-9]\s*\d[ABD-HJLNP-UWXYZ]{2}$/i
+      if value=~ SINGLE_DIGIT
           record.errors[attribute] << (options[:message] || "Area with only single digit districts")
 
       end
 
-      if value=~ /^[A-PR-UWYZ][A-HK-Y](?!AB|LL|SO)[0-9]\s*\d[ABD-HJLNP-UWXYZ]{2}$/i
+      if value=~ DOUBLE_DIGIT
           record.errors[attribute] << (options[:message] || "Area with only double digit districts")
         end
 
               unless value=~ POSTCODE_REGEX
               end
-
 
 
 end
