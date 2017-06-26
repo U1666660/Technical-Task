@@ -51,7 +51,13 @@ end
 
 def validate_each(record, attribute, value)
 
+      if value=~ /\D\W$/i
+          record.errors[attribute] << (options[:message] || "Junk")
+      end
 
+      if value=~ /\w$/i
+          record.errors[attribute] << (options[:message] || "Invalid")
+      end
 
       if value=~ /^([A-PR-UWYZ][0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{1})$/i
           record.errors[attribute] << (options[:message] || "Incorrect inward code length")
