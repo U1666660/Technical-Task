@@ -5,7 +5,44 @@ class PostcodedataController < ApplicationController
   # GET /postcodedata.json
   def index
     @postcodedata = Postcodedatum.all.order(row_id: :asc).paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @postcodedata.to_csv }
+    end
+
   end
+
+  def new
+    @postcodedata = Postcodedatum.new
+  end
+
+  def create
+    @postcodedatum = Postcodedatum.new(postcodedatum_params)
+
+    respond_to do |format|
+      if @postcodedatum.save
+        format.html { redirect_to @postcodedatum, notice: 'Ready to download now!' }
+        format.json { render :show, status: :created, location: @postcodedatum }
+      else
+        format.html { render :new }
+        format.json { render json: @postcodedatum.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+  def update
+    respond_to do |format|
+      if @postcodedatum.update(postcodedatum_params)
+        format.html { redirect_to @postcodedatum, notice: 'Postcode datum was successfully updated.' }
+        format.json { render :show, status: :ok, location: @postcodedatum }
+      else
+        format.html { render :edit }
+        format.json { render json: @postcodedatum.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
 
   def import
