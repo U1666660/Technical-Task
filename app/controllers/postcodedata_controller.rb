@@ -4,10 +4,10 @@ class PostcodedataController < ApplicationController
   # GET /postcodedata
   # GET /postcodedata.json
   def index
-    @postcodedata = Postcodedatum.all.order(row_id: :asc).paginate(:page => params[:page], :per_page => 30)
+    @postcodedata = Postcodedatum.all.order(row_id: :asc)
     respond_to do |format|
       format.html
-      format.csv { send_data @postcodedata.to_csv }
+      format.csv { send_data @postcodedata.to_csv, filename: "succeeded_validation.csv" }
     end
 
   end
@@ -44,10 +44,20 @@ class PostcodedataController < ApplicationController
   end
 
 
+  def destroy
+    @postcodedatum.destroy
+    respond_to do |format|
+      format.html { redirect_to @postcodedatum, notice: 'Failed postcode was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+
+
 
   def import
     Postcodedatum.import(params[:file])
-    redirect_to postcodedata_path, notice: "Postcode Data Uploaded successfully!"
+    redirect_to postcodedata_path, notice: "Postcode data validation is complete!"
   end
 
 

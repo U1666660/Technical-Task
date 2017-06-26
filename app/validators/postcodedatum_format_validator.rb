@@ -1,21 +1,8 @@
 class PostcodedatumFormatValidator < ActiveModel::EachValidator
 
-  POSTCODEDATUM_REGEX = begin
-        an_naa_or_ann_naa   = '^[A-PR-UWYZ]{1}\d{1,2}\s?\d[ABD-HJLNP-UWXYZ]{2}$'
-        aan_naa_or_aann_naa = '^[A-PR-UWYZ]{1}[A-HK-Y]{1}\d{1,2}\s?\d[ABD-HJLNP-UWXYZ]{2}$'
-        ana_naa             = '^[A-PR-UWYZ]{1}\d[A-HJKSTUW]{1}\s?\d[ABD-HJLNP-UWXYZ]{2}$'
-        aana_naa            = '^[A-PR-UWYZ]{1}[A-HK-Y]{1}\d[ABEHMNPRVWXY]{1}\s?\d[ABD-HJLNP-UWXYZ]{2}$'
-        historic_code="GIR\s?0AA"
-        postcode_spec = "#{an_naa_or_ann_naa}|#{aan_naa_or_aann_naa}|#{ana_naa}|#{aana_naa}|#{historic_code}"
-        pattern = /#{postcode_spec}/i
-      end
-
       def validate_each(record, attribute, value)
-          unless value=~ POSTCODEDATUM_REGEX
-            record.errors[attribute] << (options[:message] || "#{value} is not a valid UK postcode")
+          unless value=~ /\A[GIR\s?0AA]|((^([A-PR-UWYZ][0-9][0-9]?)|(^([A-PR-UWYZ][A-HK-Y][0-9][0-9])|^([BR|FY|HA|HD|HG|HR|HS|HX|JE|LD|SM|SR|WC|WN|ZE][0-9])|^([A-PR-UWYZ][A-HK-Y][0-9])|^([AB|LL|SO][0-9][0-9])|^(WC[0-9][A-Z])|(^([A-PR-UWYZ][0-9][A-HJKPSTUW])|^([A-PR-UWYZ][A-HK-Y][0-9][ABEHMNPRVWXY]))))\s[0-9][ABD-HJLNP-UW-Z]{2})\Z/i
+            Postcodedatum.delete_all
           end
         end
-
-
-
 end

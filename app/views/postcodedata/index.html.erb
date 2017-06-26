@@ -17,8 +17,11 @@
 <% end %>
 
 </div>
-
-
+<br>
+<div class="container">
+  <%= link_to 'Download', "/postcodedata.csv", :class=>"btn btn-success" %>
+  <%= link_to 'Home', root_path, :class=>"btn btn-default" %>
+</div>
 
 <table class="table table-hover">
 
@@ -43,11 +46,3 @@
 </div>
 
 <br>
-
-<div class="text-center">
-<p><%= will_paginate @postcodedata %></p>
-</div>
-
-<div class="container">
-  <button type="button" class="btn btn-success"><%= link_to 'Validate', new_postcodedatum_path, style: 'color: white' %></button>
-</div>

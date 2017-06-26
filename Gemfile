@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3.7'
+
+gem 'utf8-cleaner', '~> 0.2.5'

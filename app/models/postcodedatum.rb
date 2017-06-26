@@ -1,9 +1,10 @@
 class Postcodedatum < ApplicationRecord
 
-validates :postcode, :postcodedatum_format => true
+validates :postcode, :presence => true, :postcodedatum_format => true
+
 
   def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
+    CSV.foreach(file.path, headers: true ) do |row|
       Postcodedatum.create! row.to_hash
     end
   end
