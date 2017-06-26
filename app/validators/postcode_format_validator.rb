@@ -48,14 +48,13 @@ pattern = /#{double_digit}/i
 end
 
 
-
 def validate_each(record, attribute, value)
 
       if value=~ /\D\W$/i
           record.errors[attribute] << (options[:message] || "Junk")
       end
 
-      if value=~ /\w$/i
+      if value=~ /\A[a-zA-Z]+\z/i
           record.errors[attribute] << (options[:message] || "Invalid")
       end
 
@@ -116,10 +115,6 @@ def validate_each(record, attribute, value)
 
 
 end
-
-
-
-
 
 
 
