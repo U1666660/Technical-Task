@@ -10,11 +10,70 @@ class PostcodeFormatValidator < ActiveModel::EachValidator
         pattern = /#{postcode_spec}/i
       end
 
-      def validate_each(record, attribute, value)
-          unless value=~ POSTCODE_REGEX
-            record.errors[attribute] << (options[:message] || "#{value} is not a valid UK postcode")
-          end
-        end
+
+
+def validate_each(record, attribute, value)
+
+
+
+      if value=~ /^([A-PR-UWYZ][0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{1})$/i
+          record.errors[attribute] << (options[:message] || "Incorrect inward code length")
+      end
+
+      if value=~ /^([A-PR-UWYZ][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\S*([0-9][ABD-HJLN-UW-Z]{2})$/i
+          record.errors[attribute] << (options[:message] || "No space")
+      end
+
+
+      if value=~ /^([Q][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+          record.errors[attribute] << (options[:message] || "'Q' in first postion")
+      end
+
+      if value=~ /^([V][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+          record.errors[attribute] << (options[:message] || "'V' in first postion")
+      end
+
+      if value=~ /^([X][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+          record.errors[attribute] << (options[:message] || "'X' in first postion")
+      end
+
+      if value=~ /^([A-PR-UWYZ][I][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+          record.errors[attribute] << (options[:message] || "'I' in second postion")
+      end
+
+      if value=~ /^([A-PR-UWYZ][J][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+          record.errors[attribute] << (options[:message] || "'J' in second postion")
+      end
+
+      if value=~ /^([A-PR-UWYZ][Z][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+          record.errors[attribute] << (options[:message] || "'Z' in second postion")
+      end
+
+      if value=~ /^([A-PR-UWYZ][0-9][Q]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+          record.errors[attribute] << (options[:message] || "'Q' in third postion with 'A9A' structure")
+      end
+
+
+      if value=~ /^[A-PR-UWYZ]{1}[A-HK-Y]{1}\d[C]{1}\s*\d[ABD-HJLNP-UWXYZ]{2}$/i
+          record.errors[attribute] << (options[:message] || "'C' in fourth postion with 'AA9A' structure")
+      end
+
+
+
+
+
+
+
+              unless value=~ POSTCODE_REGEX
+              end
+
+
+
+end
+
+
+
+
 
 
 
