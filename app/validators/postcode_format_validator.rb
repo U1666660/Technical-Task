@@ -49,7 +49,7 @@ def validate_each(record, attribute, value)
           record.errors[attribute] << (options[:message] || "'Z' in second postion")
       end
 
-      if value=~ /^([A-PR-UWYZ][0-9][Q]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+      if value=~ /^([A-PR-UWYZ]{1}[0-9]{1}[Q])\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
           record.errors[attribute] << (options[:message] || "'Q' in third postion with 'A9A' structure")
       end
 
@@ -60,9 +60,14 @@ def validate_each(record, attribute, value)
 
 
 
+      if value=~ /^[A-PR-UWYZ][A-HK-Y][0-9](?!(BR|FY|HA|HD|HG|HR|HS|HX|JE|LD|SM|SR|WC|WN|ZE)[0-9])[0-9]\s*\d[ABD-HJLNP-UWXYZ]{2}$/i
+          record.errors[attribute] << (options[:message] || "Area with only single digit districts")
 
+      end
 
-
+      if value=~ /^[A-PR-UWYZ][A-HK-Y](?!AB|LL|SO)[0-9]\s*\d[ABD-HJLNP-UWXYZ]{2}$/i
+          record.errors[attribute] << (options[:message] || "Area with only double digit districts")
+        end
 
               unless value=~ POSTCODE_REGEX
               end
