@@ -50,11 +50,15 @@ end
 
 def validate_each(record, attribute, value)
 
-      if value=~ /\D\W$/i
+      if value=~ /\D+\W$/i
           record.errors[attribute] << (options[:message] || "Junk")
       end
 
-      if value=~ /\A[a-zA-Z]+\z/i
+      if value=~ /\A[a-zA-Z ]+\z/i
+          record.errors[attribute] << (options[:message] || "Invalid")
+      end
+
+      if value=~ /\A[0-9 ]+\z/i
           record.errors[attribute] << (options[:message] || "Invalid")
       end
 
