@@ -2,27 +2,27 @@
 
 <div class="container">
 
-<h1>Valid Postcodedata</h1>
+<h1>Invalid Postcodedata</h1>
 
 <div class="container">
 
+  <h3>Poscode File Import </h3>
+  <%= form_tag import_faildata_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <br>
+    <%= submit_tag "Upload" %>
 
-<h3>Poscode File Import </h3>
-<%= form_tag import_postcodedata_path, multipart: true do %>
-<%= file_field_tag :file %>
-<br>
-  <%= submit_tag "Upload" %>
-
-<% end %>
+  <% end %>
 
 </div>
 
 <br>
 
 <div class="container">
-  <%= link_to 'Download', "/postcodedata.csv", :class=>"btn btn-success" %>
+  <%= link_to 'Download', "/faildata.csv", :class=>"btn btn-warning" %>
   <%= link_to 'Home', root_path, :class=>"btn btn-default" %>
 </div>
+
 
 <table class="table table-hover">
 
@@ -35,13 +35,14 @@
   </thead>
 
   <tbody>
-    <% @postcodedata.each do |postcodedatum| %>
+    <% @faildata.each do |faildatum| %>
       <tr>
-        <td><%= postcodedatum.row_id %></td>
-        <td><%= postcodedatum.postcode %></td>
+        <td><%= faildatum.row_id %></td>
+        <td><%= faildatum.postcode %></td>
 
       </tr>
     <% end %>
   </tbody>
 </table>
+
 </div>

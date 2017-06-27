@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+
 root to: 'homes#index'
 
   resources :postcodedata
 
   resources :postcodedata do
+    collection { post :import}
+  end
+
+  resources :faildata
+
+  resources :faildata do
     collection { post :import}
   end
 

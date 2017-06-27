@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
+<h1>Postcodedata</h1>
 
-<h1>Valid Postcodedata</h1>
+
 
 <div class="container">
 
 
 <h3>Poscode File Import </h3>
 <%= form_tag import_postcodedata_path, multipart: true do %>
-<%= file_field_tag :file %>
+  <%= file_field_tag :file %>
 <br>
   <%= submit_tag "Upload" %>
 
@@ -17,18 +18,13 @@
 
 </div>
 
-<br>
 
-<div class="container">
-  <%= link_to 'Download', "/postcodedata.csv", :class=>"btn btn-success" %>
-  <%= link_to 'Home', root_path, :class=>"btn btn-default" %>
-</div>
 
 <table class="table table-hover">
 
   <thead>
     <tr>
-      <th>Row_id</th>
+      <th>Row_ID</th>
       <th>Postcode</th>
       <th colspan="3"></th>
     </tr>
@@ -39,9 +35,19 @@
       <tr>
         <td><%= postcodedatum.row_id %></td>
         <td><%= postcodedatum.postcode %></td>
-
+        <td><%= link_to 'Destroy', postcodedatum, method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
+
+<br>
+
+<div class="text-center">
+<p><%= will_paginate @postcodedata %></p>
+</div>
+
+<div class="container">
+  <button type="button" class="btn btn-success"><%= link_to 'Download', "/postcodedata.csv", style: 'color: white' %></button>
 </div>

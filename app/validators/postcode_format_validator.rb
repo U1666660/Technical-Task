@@ -50,69 +50,73 @@ end
 
 def validate_each(record, attribute, value)
 
-      if value=~ /\D+\W$/i
+      if value =~ /\D+\W$/i
           record.errors[attribute] << (options[:message] || "Junk")
       end
 
-      if value=~ /\A[a-zA-Z ]+\z/i
+      if value =~ /\d+\W$/i
+          record.errors[attribute] << (options[:message] || "Junk")
+      end
+
+      if value =~ /\A[a-zA-Z ]+\z/i
           record.errors[attribute] << (options[:message] || "Invalid")
       end
 
-      if value=~ /\A[0-9 ]+\z/i
+      if value =~ /\A[0-9 ]+\z/i
           record.errors[attribute] << (options[:message] || "Invalid")
       end
 
 
 
-      if value=~ /^([A-PR-UWYZ][0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{1})$/i
+      if value =~ /^([A-PR-UWYZ][0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{1})$/i
           record.errors[attribute] << (options[:message] || "Incorrect inward code length")
       end
 
-      if value=~ /^([A-PR-UWYZ][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\S*([0-9][ABD-HJLN-UW-Z]{2})$/i
+      if value =~ /^([A-PR-UWYZ][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\S*([0-9][ABD-HJLN-UW-Z]{2})$/i
           record.errors[attribute] << (options[:message] || "No space")
       end
 
 
-      if value=~ /^([Q][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+      if value =~ /^([Q][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
           record.errors[attribute] << (options[:message] || "'Q' in first postion")
       end
 
-      if value=~ /^([V][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+      if value =~ /^([V][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
           record.errors[attribute] << (options[:message] || "'V' in first postion")
       end
 
-      if value=~ /^([X][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+      if value =~ /^([X][A-HK-Y0-9][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
           record.errors[attribute] << (options[:message] || "'X' in first postion")
       end
 
-      if value=~ /^([A-PR-UWYZ][I][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+      if value =~ /^([A-PR-UWYZ][I][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
           record.errors[attribute] << (options[:message] || "'I' in second postion")
       end
 
-      if value=~ /^([A-PR-UWYZ][J][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+      if value =~ /^([A-PR-UWYZ][J][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
           record.errors[attribute] << (options[:message] || "'J' in second postion")
       end
 
-      if value=~ /^([A-PR-UWYZ][Z][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+      if value =~ /^([A-PR-UWYZ][Z][A-HJKS-UW0-9]?[A-HJKS-UW0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
           record.errors[attribute] << (options[:message] || "'Z' in second postion")
       end
 
-      if value=~ /^([A-PR-UWYZ]{1}[0-9]{1}[Q])\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
+      if value =~ /^([A-PR-UWYZ]{1}[0-9]{1}[Q])\s*([0-9][ABD-HJLN-UW-Z]{2})$/i
           record.errors[attribute] << (options[:message] || "'Q' in third postion with 'A9A' structure")
       end
 
 
-      if value=~ /^[A-PR-UWYZ]{1}[A-HK-Y]{1}\d[C]{1}\s*\d[ABD-HJLNP-UWXYZ]{2}$/i
+      if value =~ /^[A-PR-UWYZ]{1}[A-HK-Y]{1}\d[C]{1}\s*\d[ABD-HJLNP-UWXYZ]{2}$/i
           record.errors[attribute] << (options[:message] || "'C' in fourth postion with 'AA9A' structure")
       end
 
 
-      if value=~ SINGLE_DIGIT
+      if value =~ SINGLE_DIGIT
           record.errors[attribute] << (options[:message] || "Area with only single digit districts")
 
       end
 
-      if value=~ DOUBLE_DIGIT
+      if value =~ DOUBLE_DIGIT
           record.errors[attribute] << (options[:message] || "Area with only double digit districts")
         end
 

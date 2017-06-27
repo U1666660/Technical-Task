@@ -1,0 +1,2 @@
+module FaildataHelper
+end

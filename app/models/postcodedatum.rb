@@ -1,6 +1,8 @@
 class Postcodedatum < ApplicationRecord
 
-validates :postcode, :presence => true, :postcodedatum_format => true
+
+
+validates :postcode, :presence => true, :doubledig_format => true, :singledig_format => true,  :postcodedatum_format => true
 
 
   def self.import(file)
