@@ -16,7 +16,7 @@
     <% @postcodes.each do |postcode| %>
       <tr>
         <td><h3><%= postcode.postcode %></h3></td>
-        <td><h3><%= link_to 'Show', postcode, :class=>"btn btn-info" %><h3></td> 
+        <td><h3><%= link_to 'Show', postcode, :class=>"btn btn-info" %><h3></td>
         <td><h3><%= link_to 'Destroy', postcode, :class=>"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><h3></td>
       </tr>
     <% end %>

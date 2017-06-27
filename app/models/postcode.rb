@@ -1,5 +1,5 @@
 class Postcode < ApplicationRecord
 
-validates :postcode, :presence => true, :postcode_format => true
+validates :postcode, :presence => true, length: { minimum: 5 }, :postcode_format => true
 
 end
