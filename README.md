@@ -4,7 +4,9 @@ Name: Yunqing Peng
 Email: pengyunqing730@gmail.com
 github: https://github.com/U1666660/Technical-Task.git
 
-Language: Ruby / Framework: Ruby on Rails
+Language: Ruby
+
+Framework: Ruby on Rails
 
 Solution of UK Postcode validation
 
@@ -41,9 +43,10 @@ Below codes are my validation method in my rubyonrails validator file. It cover 
 
 For bulk import csv file. First, I require 'csv' in ROR default libraries to allow import csv to this my application. Before import data, it will validate data, then depends on different validation methods, original file row_id to import proper postcode data with ascending numerical order into SQLite database. Allow to download after validation. However, just use ROR standard libraries, no plugin and no additional gems installed, it will take a long time to upload a large csv file.
 
-I've recorded a short video clip to show my task work. Link: https://youtu.be/lyf5rPEDMZA
+I've recorded a short video clip to show my task work.
+Link: https://youtu.be/lyf5rPEDMZA
 
-==========================================================================================================================
+========================================================================
 UK Postcode validator codes
 
 POSTCODE_REGEX = begin
