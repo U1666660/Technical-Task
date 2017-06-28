@@ -39,12 +39,16 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+<<<<<<< HEAD
     autoprefixer-rails (6.7.7)
       execjs
     bindex (0.5.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+=======
+    bindex (0.5.0)
+>>>>>>> fd31c8cfa51fdee45960d86fa085cefc2ebef888
     builder (3.2.3)
     byebug (9.0.6)
     coffee-rails (4.2.2)
@@ -146,8 +150,11 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+<<<<<<< HEAD
     utf8-cleaner (0.2.5)
       activesupport
+=======
+>>>>>>> fd31c8cfa51fdee45960d86fa085cefc2ebef888
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -156,13 +163,19 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+<<<<<<< HEAD
     will_paginate (3.1.5)
+=======
+>>>>>>> fd31c8cfa51fdee45960d86fa085cefc2ebef888
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+<<<<<<< HEAD
   bootstrap-sass (~> 3.3.7)
+=======
+>>>>>>> fd31c8cfa51fdee45960d86fa085cefc2ebef888
   byebug
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
@@ -177,9 +190,13 @@ DEPENDENCIES
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
+<<<<<<< HEAD
   utf8-cleaner (~> 0.2.5)
   web-console (>= 3.3.0)
   will_paginate (~> 3.1, >= 3.1.5)
+=======
+  web-console (>= 3.3.0)
+>>>>>>> fd31c8cfa51fdee45960d86fa085cefc2ebef888
 
 BUNDLED WITH
    1.14.6
