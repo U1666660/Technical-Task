@@ -110,7 +110,7 @@ def validate_each(record, attribute, value)
 
 
 
-      if value =~ /^([A-PR-UWYZ][0-9]?)\s*([0-9][ABD-HJLN-UW-Z]{1})$/i
+      if value =~ /^([A-PR-UWYZ][0-9]?)\s*([0-9][A-Z]{1})$/i
           record.errors[attribute] << (options[:message] || "Incorrect inward code length")
       end
 
