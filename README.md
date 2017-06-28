@@ -47,7 +47,7 @@ For bulk import csv file. First, I require 'csv' in ROR default libraries to all
 I've recorded a short video clip to show my task work.
 Link: https://youtu.be/lyf5rPEDMZA
 
-========================================================================
+================================================================================
 UK Postcode validator codes
 
 POSTCODE_REGEX = begin
@@ -227,33 +227,8 @@ def validate_each(record, attribute, value)
 
 
 end
-==========================================================================================================================
-=======
-<<<<<<< HEAD
-# README
+================================================================================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 =======
 # Technical-Task
 >>>>>>> 5ba1d39baa560432cf34b80aafec9a48c4ac3954
