@@ -3,7 +3,7 @@ class Faildatum < ApplicationRecord
 validates :postcode, :presence => true, :faildatum_format => true
 
 
-#:faildatum_format => true, :test_format => true, :presence => true,
+
     def self.import(file)
       CSV.foreach(file.path, headers: true ) do |row|
         Faildatum.create! row.to_hash
