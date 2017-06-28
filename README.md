@@ -25,9 +25,9 @@ Below codes are my validation method in my rubyonrails validator file. It cover 
 
 * Incorrect inward code length
 
-* First postion with letters QVX
+* First position with letters QVX
 
-* Second postion with letters IJZ
+* Second position with letters IJZ
 
 * Single-digit districts: BR, FY, HA, HD, HG, HR, HS, HX, JE, LD, SM, SR, WC, WN, ZE
 
